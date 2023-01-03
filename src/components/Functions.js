@@ -10,8 +10,9 @@ class Functions extends Component {
         super();
         this.state = {            
             sent: false,
-            progress: 0
-        }
+            progress: 0,
+            switch: false
+        }        
     }
     
     async query(data) {
@@ -33,7 +34,8 @@ class Functions extends Component {
         model = this.props.model
         model['user'].push(this.props.response)
         var error = false;
-        var box = document.getElementById("inputBox")
+        const box = document.getElementById("inputBox");
+
         this.query(this.props.response).then((res) => {
             
             if(JSON.stringify(res).includes("error")){error = true}else{error=false}
@@ -42,38 +44,51 @@ class Functions extends Component {
             try{
                 this.props.onGetModel(model)
             }catch{}
-            this.setState({sent:true})
+            
             if(error){
+                box.ariaReadOnly = true
                 this.LoadModel();
             }
+            box.value = ""
+            // this.setState({sent:true})
+            this.setState(prevState => ({
+                switch: !prevState.switch,
+                sent: true
+            }));
             return true
-        });
-        box.value = ""
+        });        
     }
     LoadModel = () => {
-        //3.33333333333
+        const box = document.getElementById("inputBox");
         var x = setInterval(() => {
             if(this.state.progress >= 98) {
                 clearInterval(x);
                 this.setState({progress: 0})
+                box.ariaReadOnly = false
             }else{
                 this.setState(prevState => ({
-                    progress: prevState.progress + 4.761904761904762
+                    progress: prevState.progress + 3.846153846153846
                 }))
             }
         }, 1000);
     }
-    componentDidMount() {
-        const textbox = document.getElementById("inputBox");
-        textbox.addEventListener("keypress", function onEvent(event) {
-            if (event.key === "Enter") {
-                document.getElementById("submitBtn").click();
-            }
-        });
-    }
+
     componentDidUpdate() {
         var scr = document.getElementById("chatwindow")
         scr.scrollTo(0,scr.scrollHeight)
+    }
+    componentDidMount() {
+        const btn = document.getElementById("submitBtn");
+        const box = document.getElementById("inputBox");
+        box.addEventListener("keypress", function onEvent(event) {
+            if (event.key === "Enter" && !this.state.switch) {
+                btn.click();
+                console.log("CLICKED!!!");
+                this.setState(prevState => ({
+                    switch: !prevState.switch
+                }));
+            }
+        }.bind(this));
     }
     render() {
         return (
@@ -81,8 +96,8 @@ class Functions extends Component {
                 <div id="chatwindow" className='px-2 px-xl-5 chatwindow'>
                 {this.props.model["user"].map((items, x) => {
                     if (this.state.sent) {
-                        console.log(this.props.model["user"][x])
-                        console.log(x)
+                        // console.log(this.props.model["user"][x])
+                        // console.log(x)
                         return (<div key={x}>
                             <UserChat input={this.props.model['user'][x]}/>
                             <BotResponse botResponse={this.props.model['bot'][x]}/>

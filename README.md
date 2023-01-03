@@ -82,27 +82,27 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://www.horizon.sa.edu.au)
+[![Product Name Screen Shot][product-screenshot]](https://doohancomputers.com.au)
 
-This app will list all the year levels of the students from Active Directory, upon selecting a yerar level it will populate the second Combobox with the student display names.<br/>
+This is a visual chat for the gpt2 Model i built and trained on movie scripts with python3.<br/>
 
 
 ### TODO
-Add search field and button to query AD and return true or false if user exists.
+
+* Retrain model on more scripts.
+* Create new training method for conversational references
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
 
 * [![ReactJS][ReactJS]][react-url]
+* [![NodeJS][NodeJS]][node-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- GETTING STARTED -->
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -112,23 +112,27 @@ To get a local copy up and running follow these simple example steps.
 Software needed for this application to work
 * NodeJS
 * * Windows: 
-* * * [Download Node](node-url)
+* * * [Download NodeJS](node-url)
 * * Linux:
-* * *  ```sudo apt install node```
+* * *  ```sudo apt install nodejs```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/bradheff/React_AI_ChatBot.git
+   git clone https://github.com/bradheff/React_AI_ChatBot.git   
    ```
+2. `cd React_AI_ChatBot`
+3. `npm install`
+
+### Run
+1. `npm start`
+2. http://localhost:3000
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 
 Nothing to show as of yet.
@@ -138,22 +142,19 @@ _For more examples, please refer to the [Documentation](https://github.com/BradH
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Show bot is typing indicator
+- [ ] add smiley feature
+- [ ] Support attachments
+    - [ ] Gifs
+    - [ ] Memes
 
 See the [open issues](https://github.com/bradheff/React_AI_ChatBot/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -170,8 +171,6 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- LICENSE -->
 ## License
 
 Distributed under the GPL-3.0 License. See `LICENSE` for more information.
@@ -179,8 +178,6 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- CONTACT -->
 ## Contact
 
 Your Name - [@bradheffernan](https://twitter.com/bradheffernan) - brad.heffernan83@outlook.com
@@ -190,8 +187,6 @@ Project Link: [https://github.com/bradheff/React_AI_ChatBot](https://github.com/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
 * []()
@@ -199,8 +194,6 @@ Project Link: [https://github.com/bradheff/React_AI_ChatBot](https://github.com/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/bradheff/React_AI_ChatBot.svg?style=for-the-badge
 [contributors-url]: https://github.com/bradheff/React_AI_ChatBot/graphs/contributors

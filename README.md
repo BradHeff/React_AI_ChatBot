@@ -34,10 +34,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Horizon Account Verifier</h3>
+<h3 align="center">Jerry AI ChatBot</h3>
 
   <p align="center">
-    An Account Verification App, to make sure an account exists on the network
+    A visual chatbot using a the GPT2 Model i created with Python
     <br />
     <a href="https://github.com/BradHeff/React_AI_ChatBot"><strong>Explore the docs »</strong></a>
     <br />

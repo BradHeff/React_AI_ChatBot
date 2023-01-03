@@ -39,7 +39,7 @@
   <p align="center">
     A visual chatbot using a the GPT2 Model i created with Python
     <br />
-    <a href="https://github.com/BradHeff/React_AI_ChatBot"><strong>Explore the docs »</strong></a>
+    <a href="https://heffbird.com"><strong>Visit Live Example »</strong></a>
     <br />
     <br />
     <a href="https://github.com/bradheff/React_AI_ChatBot/issues">Report Bug</a>

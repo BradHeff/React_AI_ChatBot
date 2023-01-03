@@ -10,9 +10,7 @@
 
 # production
 /build
-/.env*
-/public/.env*
-.env*
+**/*.env
 
 # misc
 .DS_Store

@@ -11,11 +11,13 @@ class Functions extends Component {
         this.state = {            
             sent: false,
             progress: 0,
-            switch: false
+            switch: false,
+            loading: true
         }        
     }
     
     async query(data) {
+        // console.log(data)
         const response = await fetch(
             process.env.REACT_APP_ENDPOINT,
             {
@@ -34,10 +36,11 @@ class Functions extends Component {
         model = this.props.model
         model['user'].push(this.props.response)
         var error = false;
+        const txt = this.props.response
         const box = document.getElementById("inputBox");
-
-        this.query(this.props.response).then((res) => {
-            
+        box.value = ""
+        this.query({inputs: txt, parameters: {temperature: 0.8, top_k: 50, top_p: 0.85, do_sample:true}, options: {wait_for_model: this.state.loading}}).then((res) => {
+            // console.log(res)
             if(JSON.stringify(res).includes("error")){error = true}else{error=false}
 
             model['bot'].push(`${error?"AI Model needs to re-load, please try again in 30seconds":res.generated_text}`)
@@ -46,15 +49,13 @@ class Functions extends Component {
             }catch{}
             
             if(error){
-                box.ariaReadOnly = true
                 this.LoadModel();
             }
-            box.value = ""
-            // this.setState({sent:true})
             this.setState(prevState => ({
                 switch: !prevState.switch,
                 sent: true
             }));
+            
             return true
         });        
     }
@@ -67,7 +68,7 @@ class Functions extends Component {
                 box.ariaReadOnly = false
             }else{
                 this.setState(prevState => ({
-                    progress: prevState.progress + 3.846153846153846
+                    progress: prevState.progress + 3.125
                 }))
             }
         }, 1000);
@@ -83,7 +84,7 @@ class Functions extends Component {
         box.addEventListener("keypress", function onEvent(event) {
             if (event.key === "Enter" && !this.state.switch) {
                 btn.click();
-                console.log("CLICKED!!!");
+                // console.log("CLICKED!!!");
                 this.setState(prevState => ({
                     switch: !prevState.switch
                 }));

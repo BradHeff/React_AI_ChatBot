@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Logo from '../assets/images/logo.png'
 
 const BotResponse = (props) => {
-    return (
+    return (       
         <div className="d-flex flex-row justify-content-start mb-4 text-white">
             <img src={Logo} alt="avatar" className="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60"/>
             <div className="card mask-custom">

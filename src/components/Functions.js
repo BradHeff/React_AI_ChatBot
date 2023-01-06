@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import UserChat from './UserChat';
 import BotResponse from './BotResponse';
+import Logo from '../assets/images/logo.png'
 
 var model = {};
 
@@ -12,7 +13,7 @@ class Functions extends Component {
             sent: false,
             progress: 0,
             switch: false,
-            loading: true
+            loading: ""
         }        
     }
     
@@ -30,7 +31,6 @@ class Functions extends Component {
         return result;
     }
     
-    
     Chat = (e) => {
         e.preventDefault()
         model = this.props.model
@@ -39,8 +39,11 @@ class Functions extends Component {
         const txt = this.props.response
         const box = document.getElementById("inputBox");
         box.value = ""
-        this.query({inputs: txt, parameters: {temperature: 0.8, top_k: 50, top_p: 0.85, do_sample:true}, options: {wait_for_model: this.state.loading}}).then((res) => {
-            // console.log(res)
+        this.setState({            
+            loading: ""
+        });
+        this.query({inputs: txt, parameters: {temperature: 0.8, top_k: 50, top_p: 0.85, do_sample:true}, options: {wait_for_model: true}}).then((res) => {
+            console.log(res)
             if(JSON.stringify(res).includes("error")){error = true}else{error=false}
 
             model['bot'].push(`${error?"AI Model needs to re-load, please try again in 30seconds":res.generated_text}`)
@@ -53,7 +56,8 @@ class Functions extends Component {
             }
             this.setState(prevState => ({
                 switch: !prevState.switch,
-                sent: true
+                sent: true,
+                loading: res.generated_text
             }));
             
             return true
@@ -101,11 +105,21 @@ class Functions extends Component {
                         // console.log(x)
                         return (<div key={x}>
                             <UserChat input={this.props.model['user'][x]}/>
-                            <BotResponse botResponse={this.props.model['bot'][x]}/>
+                            <BotResponse botResponse={this.props.model['bot'][x]} loading={this.state.loading} />
                         </div>)
                     }
                     return true
                 })}
+                {this.state.loading.length < 1 && this.state.sent?                    
+                    <div className="d-flex flex-row justify-content-start mb-4 text-white">
+                        <img src={Logo} alt="avatar" className="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="30"/>
+                        <div className="card mask-custom">                            
+                            <div className="card-body py-1">
+                                <p className="small mb-0">. . .</p>
+                            </div>
+                        </div>
+                    </div>
+                :null}
                 </div>
                 <div className="card-footer text-muted p-3 w-100" style={{backgroundColor: 'transparent'}}>
                     <div className="progress mb-2" style={{height: "6px"}}>

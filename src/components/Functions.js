@@ -113,9 +113,9 @@ class Functions extends Component {
                 {this.state.loading.length < 1 && this.state.sent?                    
                     <div className="d-flex flex-row justify-content-start mb-4 text-white">
                         <img src={Logo} alt="avatar" className="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="30"/>
-                        <div className="card mask-custom">                            
-                            <div className="card-body py-1">
-                                <p className="small mb-0">. . .</p>
+                        <div className="card mask-custom typing">                            
+                            <div className="card-body py-1" style={{width: '65px', height: '35px'}}>
+                                <p className="mb-0" style={{height: '15px'}}><span>.</span> <span>.</span> <span>.</span></p>
                             </div>
                         </div>
                     </div>

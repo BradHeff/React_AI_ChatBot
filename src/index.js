@@ -6,6 +6,7 @@ import WebFont from 'webfontloader';
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/index.css';
 import './assets/css/App.css';
+import './assets/css/typing.css';
 import App from './content/App'
 
 import { Provider } from 'react-redux';

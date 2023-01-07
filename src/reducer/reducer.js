@@ -2,7 +2,7 @@ import {
    MODEL, RESPONSE } from './constants';
 
 const initialState = {
-   model: {user:[], bot: []},
+   model: {user:{text: [], time: []}, bot: {text: [], time: []}},
    response: ''
 }
 

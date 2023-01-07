@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import UserChat from './UserChat';
 import BotResponse from './BotResponse';
 import Logo from '../assets/images/logo.png'
@@ -34,19 +35,22 @@ class Functions extends Component {
     Chat = (e) => {
         e.preventDefault()
         model = this.props.model
-        model['user'].push(this.props.response)
+        model['user']['text'].push(this.props.response)
+        model['user']['time'].push(new Date())
         var error = false;
         const txt = this.props.response
         const box = document.getElementById("inputBox");
         box.value = ""
         this.setState({            
-            loading: ""
+            loading: "",
+            sent: true
         });
         this.query({inputs: txt, parameters: {temperature: 0.8, top_k: 50, top_p: 0.85, do_sample:true}, options: {wait_for_model: true}}).then((res) => {
             console.log(res)
             if(JSON.stringify(res).includes("error")){error = true}else{error=false}
 
-            model['bot'].push(`${error?"AI Model needs to re-load, please try again in 30seconds":res.generated_text}`)
+            model['bot']['text'].push(`${error?"AI Model needs to re-load, please try again in 30seconds":res.generated_text}`)
+            model['bot']['time'].push(new Date())
             try{
                 this.props.onGetModel(model)
             }catch{}
@@ -56,7 +60,6 @@ class Functions extends Component {
             }
             this.setState(prevState => ({
                 switch: !prevState.switch,
-                sent: true,
                 loading: res.generated_text
             }));
             
@@ -99,13 +102,13 @@ class Functions extends Component {
         return (
             <div className="card-body px-0">
                 <div id="chatwindow" className='px-2 px-xl-5 chatwindow'>
-                {this.props.model["user"].map((items, x) => {
+                {this.props.model["user"]['text'].map((items, x) => {
                     if (this.state.sent) {
                         // console.log(this.props.model["user"][x])
                         // console.log(x)
                         return (<div key={x}>
-                            <UserChat input={this.props.model['user'][x]}/>
-                            <BotResponse botResponse={this.props.model['bot'][x]} loading={this.state.loading} />
+                            <UserChat input={this.props.model['user']['text'][x]} time={this.props.model['user']['time'][x]}/>
+                            <BotResponse botResponse={this.props.model['bot']['text'][x]} time={this.props.model['bot']['time'][x]}/>
                         </div>)
                     }
                     return true

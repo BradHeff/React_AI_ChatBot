@@ -1509,11 +1509,21 @@ a.scroll-top.show:hover {
 }
 
 .chatbtn {
+    background-color: var(--secondary-bg);
+    border-radius: 8px;
+    padding: 5px;
     font-size: 26px;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
 }
 
 .chatbtn:hover {
-    font-size: 30px;
+    background-color: var(--primary-bg);
 }
 
 .gradient-custom {
@@ -1521,10 +1531,10 @@ a.scroll-top.show:hover {
     background: #fccb90;
 
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to bottom right, rgba(252, 203, 144, 1), rgba(213, 126, 235, 1));
+    background: -webkit-linear-gradient(to bottom right, rgb(80, 120, 180), rgb(77, 68, 119));
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to bottom right, rgba(252, 203, 144, 1), rgba(213, 126, 235, 1))
+    background: linear-gradient(to bottom right, rgb(80, 120, 180), rgb(77, 68, 119))
 }
 
 .gradient-title {
@@ -1532,10 +1542,10 @@ a.scroll-top.show:hover {
     background: #b18551;
 
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to bottom right, rgb(161, 123, 77), rgb(107, 45, 122));
+    background: -webkit-linear-gradient(to bottom right, rgb(43, 71, 114), rgb(51, 44, 85));
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to bottom right, rgb(161, 123, 77), rgb(107, 45, 122))
+    background: linear-gradient(to bottom right, rgb(43, 71, 114), rgb(51, 44, 85))
 }
 
 .mask-custom {

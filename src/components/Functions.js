@@ -133,8 +133,8 @@ class Functions extends Component {
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar" className="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60"/>
                             <input type="text" className="form-control form-control-lg mx-1" style={{borderColor: "none", boxShadow: 'none'}} id="inputBox" placeholder="Type message" onChange={(e)=>this.props.onBotResponse(e.target.value)}/>
                         </div>
-                        <div className='d-flex align-items-center justify-content-center' style={{width: "50px"}}>
-                            <button id="submitBtn" type="submit" className="chatbtn border-0 text-primary" style={{backgroundColor: 'transparent'}} onClick={(e) => this.Chat(e)}><FontAwesomeIcon icon="fa-paper-plane" /></button>
+                        <div className='d-flex align-items-center justify-content-center' style={{width: "70px"}}>
+                            <button id="submitBtn" type="submit" className="chatbtn border-0 text-white" onClick={(e) => this.Chat(e)}><FontAwesomeIcon icon="fa-paper-plane" /></button>
                         </div>
                     </div>
             </div>
